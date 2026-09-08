@@ -1,4 +1,6 @@
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-type TodoMerged = Todo & {
+import { Todo } from './Todo';
+import { User } from './User';
+
+export type TodoMerged = Todo & {
   user: User | undefined;
 };

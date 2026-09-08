@@ -4,6 +4,9 @@ import { TodoList } from './components/TodoList';
 import usersFromServer from './api/users';
 import todosFromServer from './api/todos';
 import { useState } from 'react';
+import { User } from './types/User';
+import { Todo } from './types/Todo';
+import { TodoMerged } from './types/TodoMerged';
 
 function findUserById(userId: number) {
   return usersFromServer.find((user: User) => user.id === userId);
