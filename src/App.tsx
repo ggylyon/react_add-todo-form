@@ -24,8 +24,9 @@ export const App = () => {
   const [hasInputError, setHasInputError] = useState(false);
 
   function addTodo(title: string, userId: number) {
+    const maxId = todos.length ? Math.max(...todos.map(todo => todo.id)) : 0;
     const newTodo: TodoMerged = {
-      id: todos.length ? Math.max(...todos.map(todo => todo.id)) + 1 : 0,
+      id: maxId + 1,
       title: title,
       completed: false,
       userId: userId,
@@ -82,12 +83,10 @@ export const App = () => {
             value={selectedUserId}
             onChange={event => {
               setHasSelectError(false);
-              setSelectedUserId(+event.target.value);
+              setSelectedUserId(Number(event.target.value));
             }}
           >
-            <option value={0} disabled>
-              Choose a user
-            </option>
+            <option value={0}>Choose a user</option>
             {usersFromServer.map((user: User) => {
               return (
                 <option value={user.id} key={user.id}>
