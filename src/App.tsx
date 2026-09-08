@@ -25,7 +25,7 @@ export const App = () => {
 
   function addTodo(title: string, userId: number) {
     const newTodo: TodoMerged = {
-      id: Math.max(...todos.map(todo => todo.id)) + 1,
+      id: todos.length ? Math.max(...todos.map(todo => todo.id)) + 1 : 0,
       title: title,
       completed: false,
       userId: userId,
@@ -85,7 +85,7 @@ export const App = () => {
               setSelectedUserId(+event.target.value);
             }}
           >
-            <option value="0" disabled>
+            <option value={0} disabled>
               Choose a user
             </option>
             {usersFromServer.map((user: User) => {
